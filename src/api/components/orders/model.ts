@@ -2,28 +2,48 @@ import { model, Schema } from 'mongoose'
 
 const orderSchema = new Schema(
   {
-    name: {
-      type: String,
+    user: {
+      type: Schema.Types.ObjectId,
       required: true,
-      trim: true,
-
+      ref: 'User',
     },
-
-    quantity: {
-        type: Number,
-        required: true,
-        trim: true,
-  
+    orderItems: [
+      {
+        name: { type: String, required: true },
+        qty: { type: Number, required: true },
+        image: { type: String, required: true },
+        product: {
+          type: Schema.Types.ObjectId,
+          required: true,
+          ref: 'Product',
+        },
       },
+    ],
+    shippingAddress: {
+      address: { type: String, required: true },
+      city: { type: String, required: true },
+      postalCode: { type: String, required: true },
+      country: { type: String, required: true },
+    },
+    totalPrice: {
+      type: Number,
+      required: true,
+      default: 0.0,
+    },
+    isDelivered: {
+      type: Boolean,
+      required: true,
+      default: false,
+    },
+    deliveredAt: {
+      type: Date,
+    },
+  },
+  {
+    timestamps: true,
+  }
+)
 
-      address: {
-        type: String,
-        required: true,
-        trim: true,
-  
-      },  
+const Order = model('Order', orderSchema)
 
-  { timestamps: true }
-);
-
-export default ('Order', orderSchema)
+export default Order

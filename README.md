@@ -123,3 +123,14 @@ It lets customers sign up using their phone no, and order almost anything, the o
 | :-------- | :------- | :-------------------------------- |
 | `productName`|`string` | **Required**. Id of item to fetch |
 | `address`|`string` | **Required**. Id of item to fetch |
+
+
+#### PUT Update Product
+
+```http
+  PUT /api/products/view/id
+```
+
+| Parameter | Type     | Description                       |
+| :-------- | :------- | :-------------------------------- |
+| `allProducts`|`string` | **Required**. Id of item to fetch |
