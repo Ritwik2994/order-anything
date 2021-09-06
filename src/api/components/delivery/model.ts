@@ -26,9 +26,11 @@ const deliverySchema = new Schema(
         type : String,
         enum:["ONWAY", "DELIVERED", "PICKUP", "CANCELLED"],
         default: "ONWAY"
-      } 
+      },
 
   { timestamps: true }
 );
 
-export default ('Delivery', deliverySchema)
+const Delivery = model('Delivery', deliverySchema)
+
+export default Delivery
